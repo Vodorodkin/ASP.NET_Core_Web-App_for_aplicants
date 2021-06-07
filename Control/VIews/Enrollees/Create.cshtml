@@ -1,0 +1,41 @@
+﻿
+@model Control.ViewModels.Pages.Enrollees.EnrolleeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label class="form-label">ФИО</label>
+        <input asp-for="Enrollee.Name" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Пол</label>
+        <select asp-for="Enrollee.Gender" class="form-control">
+            <option>М</option>
+            <option>Ж</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Дата рождения</label>
+        <input asp-for="Enrollee.Birthday" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Адрес</label>
+        <input asp-for="Enrollee.Address" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Паспорт</label>
+        <input asp-for="Enrollee.Passport" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Дата подачи документов</label>
+        <input asp-for="Enrollee.Date" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Специальность: </label>
+        <select asp-for="Enrollee.SpecialtyId" asp-items="Model.Specialties" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Добавить" class="btn btn-default" />
+    </div>
+</form>

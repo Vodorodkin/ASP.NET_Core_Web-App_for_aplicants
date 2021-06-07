@@ -1,0 +1,21 @@
+﻿@model Control.ViewModels.BaseViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model?.TitleOfPage</title>
+    <link href="@Url.Content("~/css/Site.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li>@Html.ActionLink("Главная", "Index", "Enrollees")</li>
+            <li>@Html.ActionLink("Специальности", "Index", "Specialties")</li>
+            <li>@Html.ActionLink("Контакты", "Index", "Contacts")</li>
+        </ul>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>

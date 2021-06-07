@@ -1,0 +1,88 @@
+﻿body {
+    font-size: 13px;
+    font-family: Verdana, Arial, Helvetica, Sans-Serif;
+    background-color: #f7f7fa;
+    padding-left: 40px;
+}
+a:hover {
+    color: red;
+}
+
+a {
+    text-decoration: none;
+    margin-left: 1%;
+}
+nav {
+    display: block;
+}
+
+.menu {
+    padding-left: 10px;
+}
+
+    .menu ul {
+        list-style: none;
+    }
+
+    .menu li {
+        display: inline;
+    }
+
+    .menu a:hover {
+        color: red;
+    }
+    .menu a {
+    text-decoration: none;
+    margin-left: 1%;
+    }
+
+table {
+    vertical-align: middle;
+    text-align: left;
+    border-spacing: 7px 11px;
+}
+
+.header {
+    font-weight: bold;
+}
+
+.content td {
+    margin: 1%;
+}
+
+.icons
+{
+    height:32px;
+    width:32px;
+}
+
+input {
+    width: 150px;
+}
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff'), url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal
+}
+
+.glyphicon {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.glyphicon-chevron-right:before {
+    content: "\f054";
+}
+
+.glyphicon-chevron-left:before {
+    content: "\f053";
+}
+
+
+
+

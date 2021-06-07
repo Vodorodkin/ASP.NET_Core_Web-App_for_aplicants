@@ -1,0 +1,99 @@
+﻿
+@model Control.ViewModels.Pages.Enrollees.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h3>Абитуриенты</h3>
+    <a asp-action="Create">Добавить абитуриента</a>
+    <form method="get">
+        <div class="form-inline">
+            <label>Имя: </label>
+            <input name="name" value="@Model.FilterViewModel.SelectedName" class="form-control" />
+
+            <label>Специальность: </label>
+            <select name="specialityId" asp-items="Model.FilterViewModel.Specialties" class="form-control"></select>
+
+            <input type="submit" value="Применить" class="btn btn-outline-dark" />
+            <a asp-action="Index" asp-route-name="" asp-route-specialityId="0" class="btn btn-outline-dark">Сбросить</a>
+        </div>
+    </form>
+    <table class="table">
+        <tr class="header">
+            <th>
+                <a asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.NameSort)"
+                   asp-route-name="@(Model.FilterViewModel.SelectedName)"
+                   asp-route-specialityId="@(Model.FilterViewModel.SelectedSpeciality)">ФИО</a>
+            </th>
+            <th>Пол</th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.AgeSort)"
+                   asp-route-name="@(Model.FilterViewModel.SelectedName)"
+                   asp-route-specialityId="@(Model.FilterViewModel.SelectedSpeciality)">Дата рождения</a>
+            </th>
+            <th>Адрес</th>
+            <th>Паспорт</th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.DateSort)"
+                   asp-route-name="@(Model.FilterViewModel.SelectedName)"
+                   asp-route-specialityId="@(Model.FilterViewModel.SelectedSpeciality)">Дата подачи документов</a>
+            </th>
+            <th>Специальность</th>
+        </tr>
+        @foreach (var a in Model.Enrollees)
+        {
+            <tr class="content">
+                <td>@a.Name</td>
+                <td>@a.Gender</td>
+                <td>@a.Birthday.ToLongDateString()</td>
+                <td>@a.Address</td>
+                <td>@a.Passport</td>
+                <td>@a.Date.ToLongDateString()</td>
+                <td>@a.Specialty?.Short</td>
+                <th><a asp-action="Details" asp-route-enrolleeId="@a.Id"><img width="32" height="32" src="~/icons/show.ico"></a></th>
+                <th><a asp-action="Edit" asp-route-enrolleeId="@a.Id"><img width="32" height="32" src="~/icons/edit.ico"></a></th>
+                <th><a asp-action="Delete" asp-route-enrolleeId="@a.Id"><img width="32" height="32" src="~/icons/delete.ico"></a></th>
+            </tr>
+        }
+    </table>
+
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+           asp-route-name="@(Model.FilterViewModel.SelectedName)"
+           asp-route-specialityId="@(Model.FilterViewModel.SelectedSpeciality)"
+           asp-route-sortList="@(Model.SortViewModel.Current)"
+           class="btn  btn-outline-dark">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Назад
+        </a>
+    }
+    @for (int i = 1; i <= Model.PageViewModel.TotalPages; i++)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(i)"
+           asp-route-name="@(Model.FilterViewModel.SelectedName)"
+           asp-route-specialityId="@(Model.FilterViewModel.SelectedSpeciality)"
+           asp-route-sortList="@(Model.SortViewModel.Current)"
+           class="btn  btn-outline-dark">
+            <i class="glyphicon glyphicon-chevron"></i>
+            @i
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+           asp-route-name="@(Model.FilterViewModel.SelectedName)"
+           asp-route-specialityId="@(Model.FilterViewModel.SelectedSpeciality)"
+           asp-route-sortList="@(Model.SortViewModel.Current)"
+           class="btn btn-outline-dark">
+            Вперед
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
+</div>

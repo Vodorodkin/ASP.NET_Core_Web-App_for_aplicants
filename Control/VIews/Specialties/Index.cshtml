@@ -1,0 +1,26 @@
+﻿@model Control.ViewModels.SpecialtiesViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h3>Специальности</h3>
+    <table class="table">
+        <tr class="header">
+            <td>Шифр специальности</td>
+            <td>Полное название</td>
+            <td>Краткое название</td>
+            <td>Период обучения</td>
+            <td>План приема</td>
+        </tr>
+        @foreach (var s in Model.Specialities)
+        {
+            <tr class="content">
+                <td>@s.Code</td>
+                <td>@s.Name</td>
+                <td>@s.Short</td>
+                <td>@s.PeriodOfStudy</td>
+                <td>@s.Plan</td>
+            </tr>
+        }
+    </table>
+</div>

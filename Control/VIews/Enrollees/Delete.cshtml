@@ -1,0 +1,47 @@
+﻿@using Control.Models
+@model Control.ViewModels.Pages.Enrollees.EnrolleeViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Delete" asp-route-id="@Model.Enrollee.Id">
+    <div class="form-group">
+        @Html.HiddenFor(Model => Model.Enrollee.Id)
+        <label class="form-label">ФИО</label>
+        <input name="name" value="@Model.Enrollee.Name" class="form-control" type="text" disabled>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Пол</label>
+        <select name="Gender" asp-for="@Model.Enrollee.Gender" class="form-control" disabled>
+            <option>М</option>
+            <option>Ж</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Дата рождения</label>
+        <input name="Birthday" value="@Model.Enrollee.Birthday.ToLongDateString()" class="form-control" type="text" disabled>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Адрес</label>
+        <input name="Address" value="@Model.Enrollee.Address" class="form-control" type="text" disabled>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Паспорт</label>
+        <input name="Passport" value="@Model.Enrollee.Passport" class="form-control" type="text" disabled>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Дата подачи документов</label>
+        <input name="Date" value="@Model.Enrollee.Date.ToLongDateString()" class="form-control" type="text" disabled>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Специальность: </label>
+        <select name="specialityId" asp-items="Model.Specialties" class="form-control" disabled></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Удалить" class="btn btn-default" />
+    </div>
+</form>
+
+
+
+
